@@ -89,7 +89,7 @@ public class CoreHandler {
     }
 
     protected static int selectFeeds(Feeds feeds){
-        System.out.print("\n\nQualities available:");
+        System.out.println("\nQualities available:");
         int i = 1;
         for(Quality qual: feeds.getQualities()){
             System.out.println(i+". "+qual.text);

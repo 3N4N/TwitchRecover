@@ -48,8 +48,11 @@ public class CLIHandler {
         );
         int menuOption = 0;
         do {
+            System.out.print("Choose an option: ");
             menuOption = sc.nextInt();
         } while (menuOption < 1 || menuOption > 2);
+
+        System.out.println();
 
         switch (menuOption) {
             case 1:

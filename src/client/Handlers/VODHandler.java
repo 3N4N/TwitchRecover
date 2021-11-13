@@ -46,15 +46,14 @@ public class VODHandler {
      * of a VOD M3U8 URL.
      */
     private void retrieve() {
-        System.out.print("\nVOD URL retrieval:");
         String url = CoreHandler.promptURL(VideoType.VOD);
         VOD vod = new VOD(false);
         vod.retrieveID(url);
         Feeds feeds = vod.getVODFeeds();
         int quality = CoreHandler.selectFeeds(feeds);
         String vodlink = vod.getFeed(quality-1);
-        System.out.print("\nLink: " + vodlink);
+        System.out.println("\nLink: " + vodlink);
         clipboard.copyText(vodlink);
-        System.out.print("\nLink is copied to clipboard\n");
+        System.out.println("\nLink is copied to clipboard");
     }
 }

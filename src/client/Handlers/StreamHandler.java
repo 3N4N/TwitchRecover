@@ -50,10 +50,7 @@ public class StreamHandler {
      */
     private void retrieve() {
         Live live = new Live();
-        System.out.print(
-                  "\n\nLive stream link retrieval:"
-                + "\nEnter the channel name: "
-        );
+        System.out.print("Enter the channel name: ");
         String response = CLIHandler.sc.next();
         live.setChannel(response.toLowerCase());
         Feeds feeds = live.retrieveFeeds();
