@@ -23,8 +23,9 @@
 
 package client.Handlers;
 
+import java.util.ArrayList;
+import core.Enums.Quality;
 import client.CLIHandler;
-import client.ClipBoard;
 import core.Feeds;
 import core.Live;
 
@@ -33,26 +34,15 @@ import core.Live;
  * handles stream prompts;
  */
 public class StreamHandler {
-    private ClipBoard clipboard = new ClipBoard();
-
     /**
      * Constructor and main method
      * of the StreamHandler
      * object class.
      */
-    public StreamHandler() {
-        retrieve();
-    }
-
-    /**
-     * This method prompts and handles
-     * the retrieval of live stream links.
-     */
-    private void retrieve() {
+    public StreamHandler(String url) {
         Live live = new Live();
-        System.out.print("Enter the channel name: ");
-        String response = CLIHandler.sc.next();
-        live.setChannel(response.toLowerCase());
+        String channel = url.substring(url.lastIndexOf('/')+1);
+        live.setChannel(channel.toLowerCase());
         Feeds feeds = live.retrieveFeeds();
         if(feeds.getFeeds().isEmpty()){
             System.out.print(
@@ -63,10 +53,17 @@ public class StreamHandler {
             return;
         }
 
-        int quality = CoreHandler.selectFeeds(feeds);
-        String streamlink = live.getFeed(quality);
-        System.out.println("\nM3U8 URL: " + streamlink);
-        clipboard.copyText(streamlink);
-        System.out.println("\nLink is copied to clipboard");
+        ArrayList<Quality> qualities = feeds.getQualities();
+        for (int i = 0; i < qualities.size(); i++) {
+            String streamlink = live.getFeed(i);
+            System.out.println(qualities.get(i).text + ": " + streamlink +"\n");
+        }
+    }
+
+    /**
+     * This method prompts and handles
+     * the retrieval of live stream links.
+     */
+    private void retrieve() {
     }
 }

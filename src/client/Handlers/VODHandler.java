@@ -28,34 +28,23 @@ import client.CLIHandler;
 import client.Enums.VideoType;
 import client.ClipBoard;
 import core.Enums.FileExtension;
+import core.Enums.Quality;
 import core.Feeds;
 import core.VOD;
-import core.Enums.Quality;
 
 /**
  * VODHandler object class which
  * handles a VOD prompt.
  */
 public class VODHandler {
-    private ClipBoard clipboard = new ClipBoard();
-
-    public VODHandler() {
-        retrieve();
-    }
-
-    /**
-     * This method process the retrieval
-     * of a VOD M3U8 URL.
-     */
-    private void retrieve() {
-        String url = CoreHandler.promptURL(VideoType.VOD);
+    public VODHandler(String url) {
         VOD vod = new VOD(false);
         vod.retrieveID(url);
         Feeds feeds = vod.getVODFeeds();
         ArrayList<Quality> qualities = feeds.getQualities();
         for (int i = 0; i < qualities.size(); i++) {
             String vodlink = vod.getFeed(i);
-            System.out.println(qualities.get(i).text + ": " + vodlink);
+            System.out.println(qualities.get(i).text + ": " + vodlink + "\n");
         }
     }
 }

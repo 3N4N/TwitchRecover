@@ -24,6 +24,7 @@
 package client;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import client.Handlers.StreamHandler;
 import client.Handlers.VODHandler;
@@ -42,27 +43,24 @@ public class CLIHandler {
      * Core method of the CLI handler.
      */
     protected static void main() {
-        System.out.println(
-                "\n1. Get a live stream link"
-                + "\n2. Get the link to a VOD"
-        );
-        int menuOption = 0;
-        do {
-            System.out.print("Choose an option: ");
-            menuOption = sc.nextInt();
-        } while (menuOption < 1 || menuOption > 2);
+        // For debugging purposes.
+        // String link = "https://www.twitch.tv/f_o/videos/1243382768";
+        // link = "https://www.twitch.tv/sassywater";
 
-        System.out.println();
+        System.out.print("Enter the link: ");
+        String link = sc.nextLine();
 
-        switch (menuOption) {
-            case 1:
-                StreamHandler sh = new StreamHandler();
-                break;
-            case 2:
-                VODHandler vh = new VODHandler();
-                break;
-            default:
-                break;
+        String vodpat = "(https://www\\.)?twitch.tv/([a-zA-Z0-9_]*/)?videos/[0-9]*";
+        String streampat = "(https://www\\.)?twitch.tv/[a-zA-Z0-9_]*/?";
+
+        if (Pattern.matches(vodpat, link)) {
+            System.out.println("Retrieving VOD . . .");
+            VODHandler vh = new VODHandler(link);
+        } else if (Pattern.matches(streampat, link)) {
+            System.out.println("Retrieving stream . . .");
+            StreamHandler sh = new StreamHandler(link);
+        } else {
+            System.out.println("Enter valid twitch link.");
         }
     }
 }
