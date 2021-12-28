@@ -23,12 +23,14 @@
 
 package client.Handlers;
 
+import java.util.ArrayList;
 import client.CLIHandler;
 import client.Enums.VideoType;
 import client.ClipBoard;
 import core.Enums.FileExtension;
 import core.Feeds;
 import core.VOD;
+import core.Enums.Quality;
 
 /**
  * VODHandler object class which
@@ -50,10 +52,10 @@ public class VODHandler {
         VOD vod = new VOD(false);
         vod.retrieveID(url);
         Feeds feeds = vod.getVODFeeds();
-        int quality = CoreHandler.selectFeeds(feeds);
-        String vodlink = vod.getFeed(quality-1);
-        System.out.println("\nLink: " + vodlink);
-        clipboard.copyText(vodlink);
-        System.out.println("\nLink is copied to clipboard");
+        ArrayList<Quality> qualities = feeds.getQualities();
+        for (int i = 0; i < qualities.size(); i++) {
+            String vodlink = vod.getFeed(i);
+            System.out.println(qualities.get(i).text + ": " + vodlink);
+        }
     }
 }
