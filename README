@@ -12,29 +12,30 @@ original project here:
 Requirements
 ------------
 
-- Minimum
-  - Java > 8
-- Recommended
-  - Java 17
+o Minimum
+  o Java > 8
+o Recommended
+  o Java 17
 
 
 How to Run
 ----------
 
-- On Windows
+o On Windows
 
     .\gradlew.bat build
-    java -jar build\libs\TwitchRecover.jar
+    java -jar build\libs\TwitchRecover.jar <link>
 
-- On Linux
+o On Linux
 
     ./gradlew build
-    java -jar build\libs\TwitchRecover.jar
+    java -jar build/libs/TwitchRecover.jar <link>
 
 
 Issues
 ------
 
-If you face any problem, specially any bug, open an issue in the github repo.
+If you face any problem, specially any bug, reach out through email.
 
-    https://github.com/3N4N/TwitchRecover
+  o Personal email: 3nan.ajmain AT gmail
+  o Public inbox: ~enan/public-inbox@lists.sr.ht
