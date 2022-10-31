@@ -33,6 +33,6 @@ public class CLI {
      * @param args
      */
     public static void main(String[] args){
-        CLIHandler.main();
+        CLIHandler.main(args);
     }
 }
