@@ -12,10 +12,20 @@ original project here:
 Requirements
 ------------
 
-o Minimum
-  o Java > 8
-o Recommended
-  o Java 17
+o Java
+  o Minimum: Java 8
+  o Recommended: Java 17
+o OAuth access token
+  o Follow the official guide
+    https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#client-credentials-grant-flow
+  o Get client id and secret
+    https://dev.twitch.tv/console
+  o Create a json file at $HOME/.TwitchRecover/secrets.json
+    with the following content
+    {
+      "client_id": "<your_client_id>",
+      "oauth_token": "Bearer <your_OAuth_token>"
+    }
 
 
 How to Run

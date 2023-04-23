@@ -124,9 +124,9 @@ public class VOD {
      * @return Feeds    Feeds object corresponding to the VOD of the VOD ID.
      */
     public Feeds getVODFeeds(){
-        feeds=VideoAPI.getVODFeeds(VODID);
+        feeds = VideoAPI.getVODFeeds(VODID);
         if(feeds.getFeeds().isEmpty()){
-            feeds= VideoAPI.getSubVODFeeds(VODID, false);
+            feeds = VideoAPI.getSubVODFeeds(VODID);
         }
         return feeds;
     }
