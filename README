@@ -3,10 +3,18 @@ Twitch Recover
 
 A java program to retrieve URL links of livestreams and VODs.
 
-This is an aggressively refactored version of another project. You can find the
+This is an aggressively refactored version of another project.  You can find the
 original project here:
 
     https://github.com/TwitchRecover/TwitchRecover
+
+
+NOTICE
+------
+
+This project is archived.  There will not be any future updates.  There is a
+substitute project written in Rust you may be interested in:
+https://github.com/3N4N/TwitchLink
 
 
 Requirements
